@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,13 +10,19 @@ const Slider = () => {
   return (
     <section className="relative  w-full bg-[#edf1f3dd] h-[500px] md:h-[612px]">
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Autoplay]}
         spaceBetween={0}
         slidesPerView={1}
         navigation={{
           prevEl: ".swiper-button-prev-custom",
           nextEl: ".swiper-button-next-custom",
         }}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        loop={true}
         className="h-full"
       >
         <SwiperSlide>

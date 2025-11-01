@@ -1,15 +1,16 @@
-import { Link, useLocation } from "react-router";
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import Logo from "../assets/Images/logo.jpeg";
 import logo from "../assets/Images/logo.webp";
 import LogoDark from "../assets/Images/logo_dark.jpg";
 import logodark from "../assets/Images/logo_dark.webp";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "../Contexts/LanguageContext";
 import { useTheme } from "../Contexts/ThemeContext";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, toggleLanguage, t, Languages } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => {
@@ -52,121 +53,169 @@ const Navbar = () => {
 
   return (
     <header
-      className="padding-navbar  dark:bg-black bg-nav-bg"
+      className="padding-navbar py-2 dark:bg-black bg-nav-bg"
       style={{ direction: "ltr" }}
     >
       <nav className="flex justify-between items-center ">
         {theme === "light" ? (
-          <picture className="*:size-20">
+          <picture className="*:size-14">
             <source srcSet={logo} type="image/webp" />
             <img src={Logo} alt="Logo" />
           </picture>
         ) : (
-          <picture className="*:size-20">
+          <picture className="*:size-14">
             <source srcSet={logodark} type="image/webp" />
             <img src={LogoDark} alt="Logo" />
           </picture>
         )}
-        <div className="hidden lg:flex items-center space-x-22 ">
-          <ul className="flex items-center space-x-11">
-            {t("navLinks").map((link) => (
-              <li
-                key={link.path}
-                className="font-lato font-medium text-[14px] leading-[148%] tracking-[10%] mx-4"
+
+        <ul className="items-center space-x-11 md:flex hidden">
+          {t("navLinks").map((link) => (
+            <li
+              key={link.path}
+              className="font-lato font-medium text-[14px] leading-[148%] tracking-[10%] mx-4"
+            >
+              <Link
+                to={link.path}
+                className={`${
+                  location.pathname === link.path
+                    ? "text-hover"
+                    : "text-text dark:text-text-dark hover:text-hover"
+                }`}
               >
-                <Link
-                  to={link.path}
-                  className={`${
-                    location.pathname === link.path
-                      ? "text-hover"
-                      : "text-text dark:text-text-dark hover:text-hover"
-                  }`}
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center space-x-6 *:text-text dark:*:text-text-dark *:hover:text-hover *:cursor-pointer">
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <i className="fa-solid fa-user"></i>
-            <i className="fa-solid fa-cart-shopping"></i>
-            {theme === "light" ? (
-              <Moon onClick={toggleTheme} className="w-5 h-5" />
-            ) : (
-              <Sun onClick={toggleTheme} className="w-5 h-5" />
-            )}
-            {language === "en" ? (
-              <span onClick={toggleLanguage}>AR</span>
-            ) : (
-              <span onClick={toggleLanguage}>EN</span>
-            )}
-          </div>
-        </div>
-        <div className="lg:hidden flex row-re items-center space-x-4">
+                {link.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="hidden md:flex items-center space-x-6  *:text-text dark:*:text-text-dark *:hover:text-hover *:cursor-pointer">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-user"></i>
+          <i className="fa-solid fa-cart-shopping"></i>
           {theme === "light" ? (
-            <Moon
-              onClick={toggleTheme}
-              className={`w-5 h-5 ${
-                theme === "light" ? "text-text" : "text-text-dark"
-              } hover:cursor-pointer hover:text-hover`}
-            />
+            <Moon onClick={toggleTheme} className="w-5 h-5" />
           ) : (
-            <Sun
-              onClick={toggleTheme}
-              className={`w-5 h-5 ${
-                theme === "light" ? "text-text" : "text-text-dark"
-              } hover:cursor-pointer hover:text-hover`}
-            />
+            <Sun onClick={toggleTheme} className="w-5 h-5" />
           )}
           {language === "en" ? (
-            <span
-              onClick={toggleLanguage}
-              className={`text-text dark:text-text-dark hover:cursor-pointer hover:text-hover`}
-            >
-              AR
-            </span>
+            <span onClick={toggleLanguage}>AR</span>
           ) : (
-            <span
-              onClick={toggleLanguage}
-              className={`text-text dark:text-text-dark hover:cursor-pointer hover:text-hover`}
-            >
-              EN
-            </span>
+            <span onClick={toggleLanguage}>EN</span>
           )}
+        </div>
+
+        <div className="lg:hidden flex row-re items-center space-x-4">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <Menu className="w-5 h-5 text-text dark:text-text-dark hover:cursor-pointer hover:text-hover" />
+            {isMenuOpen ? (
+              <X className="w-6 h-6 text-text dark:text-text-dark hover:text-red-600 mr-5" />
+            ) : (
+              <Menu className="w-6 h-6 text-text dark:text-text-dark hover:text-hover" />
+            )}
           </button>
         </div>
         {isMenuOpen && (
           <>
-            {/* Backdrop - closes menu when clicked */}
-            <div
-              className="fixed inset-0 bg-black/50 z-40"
+            {/* Backdrop */}
+            {/* <div
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden"
               onClick={closeMenu}
-            />
+            /> */}
 
-            {/* Mobile Menu */}
-            <div className="fixed top-20 right-0 w-1/3 h-1/2 bg-white dark:bg-[#1a1a1a] z-50 flex flex-col items-center justify-center space-y-8 border border-gray-200 dark:border-gray-700">
-              <ul className="flex flex-col items-center space-y-4">
-                <ul className="flex flex-col items-center space-y-4">
+            {/* Full Screen Menu */}
+            <div
+              className="fixed inset-x-0 top-[72px] bottom-0 bg-[#1a1a1a] dark:bg-[#0a0a0a] z-50 md:hidden overflow-y-hidden overflow-x-hidden"
+              style={{
+                height: "calc(100vh - 72px)",
+                direction: language === "ar" ? "rtl" : "ltr",
+              }}
+            >
+              <div className="container mx-auto px-4 py-6 sm:py-8">
+                {/* Navigation Links */}
+                <nav className="space-y-2">
                   {t("navLinks").map((link) => (
-                    <li key={link.path}>
-                      <Link
-                        to={link.path}
-                        onClick={closeMenu}
-                        className={`font-lato font-medium text-[14px] leading-[148%] tracking-[10%] ${
-                          location.pathname === link.path
-                            ? "text-hover"
-                            : "text-[#1a1a1a] dark:text-white hover:text-hover"
-                        }`}
-                      >
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={closeMenu}
+                      className={`flex items-center gap-4 p-4 sm:p-5 rounded-2xl ${
+                        location.pathname === link.path
+                          ? "bg-hover/20 text-hover shadow-lg border border-hover/30"
+                          : "text-gray-300 hover:bg-white/5 hover:text-hover"
+                      } transition-all cursor-pointer`}
+                    >
+                      <span className="font-medium text-lg sm:text-xl font-lato">
                         {link.title}
-                      </Link>
-                    </li>
+                      </span>
+                    </Link>
                   ))}
-                </ul>
-              </ul>
+                </nav>
+
+                {/* Divider */}
+                <div className="my-6 sm:my-8 h-px bg-white/10" />
+
+                {/* Bottom Actions */}
+                <div className="space-y-3 sm:space-y-4">
+                  {/* Language Toggle */}
+                  <button
+                    onClick={toggleLanguage}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
+                  >
+                    <div className="flex items-center gap-4">
+                      <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
+                      <span className="font-family-lato font-medium text-lg sm:text-xl font-lato">
+                        {language === "en" ? "Language" : "اللغة"}
+                      </span>
+                    </div>
+                    <span className="font-family-lato text-base sm:text-lg text-gray-400">
+                      {language === "ar" ? "العربية" : "English"}
+                    </span>
+                  </button>
+
+                  {/* Theme Toggle */}
+                  <button
+                    onClick={toggleTheme}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
+                  >
+                    <div className="flex items-center gap-4">
+                      {theme === "dark" ? (
+                        <Moon className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
+                      ) : (
+                        <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
+                      )}
+                      <span className="font-family-lato font-medium text-lg sm:text-xl font-lato">
+                        {language === "en" ? "Theme" : "المظهر"}
+                      </span>
+                    </div>
+                    <span className="font-family-lato text-base sm:text-lg text-gray-400">
+                      {theme === "dark"
+                        ? language === "en"
+                          ? "Dark"
+                          : "داكن"
+                        : language === "en"
+                        ? "Light"
+                        : "فاتح"}
+                    </span>
+                  </button>
+
+                  {/* Icons Section */}
+                  <div className="flex items-center justify-center gap-6 pt-4">
+                    <button className="text-gray-400 hover:text-hover transition-colors">
+                      <i className="fa-solid fa-magnifying-glass text-xl"></i>
+                    </button>
+                    <button className="text-gray-400 hover:text-hover transition-colors">
+                      <i className="fa-solid fa-user text-xl"></i>
+                    </button>
+                    <button className="text-gray-400 hover:text-hover transition-colors">
+                      <i className="fa-solid fa-cart-shopping text-xl"></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Bottom Decoration */}
+                <div className="mt-8 sm:mt-12 flex justify-center">
+                  <div className="w-16 sm:w-20 h-1 bg-linear-to-r from-transparent via-hover to-transparent rounded-full"></div>
+                </div>
+              </div>
             </div>
           </>
         )}
