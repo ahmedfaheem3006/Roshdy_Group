@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 @import "tailwindcss";
 
 @variant dark (.dark &);
@@ -13,9 +13,23 @@
   --color-hover: #72AEC8;
   --color-paragraph: #3A3A3A;
   --color-paragraph-dark: white;
+  --color-section-bg: #EDF1F3;
+  --color-section-bg-dark: #1E1E1E;
 
   --font-family-lato: 'Lato', sans-serif;
   --font-family-jost: 'Jost', sans-serif;
+  --font-family-cairo: 'Cairo', sans-serif;
+}
+
+.font-lato {
+  font-family: var(--font-family-lato);
+}
+
+.font-jost {
+  font-family: var(--font-family-jost);
+}
+.font-cairo {
+  font-family: var(--font-family-cairo);
 }
 
 .padding-navbar {

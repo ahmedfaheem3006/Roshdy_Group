@@ -1,8 +1,13 @@
+import SH1 from "../assets/Images/SH1.webp";
+import SH2 from "../assets/Images/SH2.webp";
+import SH3 from "../assets/Images/SH3.webp";
+import SH4 from "../assets/Images/SH4.webp";
+
 // 1️⃣ Base nav links (with keys + paths only)
 export const navLinksBase = [
   { key: "home", path: "/" },
   { key: "about", path: "/about" },
-  { key: "blogs", path: "/blogs" },
+  { key: "blogs", path: "/blog" },
   { key: "contact", path: "/contact" },
 ];
 
@@ -89,3 +94,50 @@ export const featuresContent = {
   ],
 };
 
+
+ export const slides = {
+    en: [
+      {
+        title:"CONTROL EVERYTHING\nWITH ONE TOUCH",
+        image: SH1,
+        button: "SHOP PRODUCT"
+      },
+      {
+        title: "SMART TECHNOLOGY\nFOR MODERN LIVING",
+        image: SH2,
+        button: "SHOP PRODUCT"
+      },
+      {
+        title: "LIVE SMARTER\nNOT HARDER",
+        image: SH3,
+        button: "SHOP PRODUCT"
+      },
+      {
+        title: "SMART LIVING\nSTARTS HERE",
+        image: SH4,
+        button: "SHOP PRODUCT"
+      }
+    ],
+    ar: [
+      {
+        title: "تحكم في كل شيء\nبلمسة واحدة.",
+        image: SH1,
+        button: "تسوق المنتج"
+      },
+      {
+        title: "تقنية ذكية\nلحياة عصرية",
+        image: SH2,
+        button: "تسوق المنتج"
+      },
+      {
+        title: "عش بذكاء\nليس بجهد",
+        image: SH3,
+        button: "تسوق المنتج"
+      },
+      {
+        title: "الحياة الذكية\nتبدأ هنا",
+        image: SH4,
+        button: "تسوق المنتج"
+      }
+    ]
+  };

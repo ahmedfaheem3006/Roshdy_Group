@@ -1,4 +1,7 @@
+import { useLanguage } from "../Contexts/LanguageContext";
 const FeatureCard = ({ title, description, icon }) => {
+  const { language } = useLanguage();
+
   return (
     <div className="flex  gap-3.5">
       {icon && (
@@ -9,10 +12,10 @@ const FeatureCard = ({ title, description, icon }) => {
         />
       )}
       <div>
-        <h3 className="font-family-jost text-[18px] tracking-[6%] uppercase text-text dark:text-text-dark text-nowrap mb-1">
+        <h3 className={`text-[18px] tracking-[6%] uppercase text-text dark:text-text-dark text-nowrap mb-1 ${language === "ar" ? "font-cairo" : "font-jost"}`}>
           {title}
         </h3>
-        <p className="font-family-lato font-light text-[12px] text-paragraph dark:text-paragraph-dark tracking-[3%] leading-[138%]">
+        <p className={`font-light text-[12px] text-paragraph dark:text-paragraph-dark tracking-[3%] leading-[138%] ${language === "ar" ? "font-cairo" : "font-lato"}`}>
           {description}
         </p>
       </div>
