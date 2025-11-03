@@ -1,6 +1,7 @@
 import Navbar from "./Components/Navbar"
 import Features from "./Sections/Features"
 import Slider from "./Sections/Slider"
+import Newsletter from "./Sections/Subscribe"
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Navbar />
       <Slider />
       <Features />
+      <Newsletter />
     </>
   )
 }
