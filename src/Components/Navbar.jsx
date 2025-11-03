@@ -8,15 +8,31 @@ import { Moon, Sun, Menu, X, Globe } from "lucide-react";
 import { useLanguage } from "../Contexts/LanguageContext";
 import { useTheme } from "../Contexts/ThemeContext";
 import { useEffect, useState } from "react";
+
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
   const location = useLocation();
+
+  // Track scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close menu on window resize
   useEffect(() => {
@@ -53,20 +69,24 @@ const Navbar = () => {
 
   return (
     <header
-      className="padding-navbar py-2 dark:bg-black bg-nav-bg"
+      className={`padding-navbar py-2 dark:bg-black bg-nav-bg fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "shadow-lg backdrop-blur-md bg-nav-bg/95 dark:bg-black/95" 
+          : ""
+      }`}
       style={{ direction: "ltr" }}
     >
-      <nav className="flex justify-between items-center ">
+      <nav className="flex justify-between items-center">
         {theme === "light" ? (
           <Link to="/">
-            <picture className="*:size-14">
+            <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
               <source srcSet={logo} type="image/webp" />
               <img src={Logo} alt="Logo" />
             </picture>
           </Link>
         ) : (
           <Link to="/">
-            <picture className="*:size-14">
+            <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
               <source srcSet={logodark} type="image/webp" />
               <img src={LogoDark} alt="Logo" />
             </picture>
@@ -92,7 +112,8 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex items-center space-x-6  *:text-text dark:*:text-text-dark *:hover:text-hover *:cursor-pointer">
+
+        <div className="hidden md:flex items-center space-x-6 *:text-text dark:*:text-text-dark *:hover:text-hover *:cursor-pointer">
           <i className="fa-solid fa-magnifying-glass"></i>
           <i className="fa-solid fa-user"></i>
           <i className="fa-solid fa-cart-shopping"></i>
@@ -117,14 +138,9 @@ const Navbar = () => {
             )}
           </button>
         </div>
+
         {isMenuOpen && (
           <>
-            {/* Backdrop */}
-            {/* <div
-              className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden"
-              onClick={closeMenu}
-            /> */}
-
             {/* Full Screen Menu */}
             <div
               className="fixed inset-x-0 top-[72px] bottom-0 bg-[#1a1a1a] dark:bg-[#0a0a0a] z-50 md:hidden overflow-y-hidden overflow-x-hidden"
@@ -170,7 +186,7 @@ const Navbar = () => {
                         {language === "en" ? "Language" : "اللغة"}
                       </span>
                     </div>
-                    <span className={`font-lato text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
+                    <span className={`text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                       {language === "ar" ? "العربية" : "English"}
                     </span>
                   </button>
@@ -186,11 +202,11 @@ const Navbar = () => {
                       ) : (
                         <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
                       )}
-                      <span className=" font-medium text-lg sm:text-xl font-lato">
+                      <span className={`font-medium text-lg sm:text-xl ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                         {language === "en" ? "Theme" : "المظهر"}
                       </span>
                     </div>
-                    <span className={`font-lato text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
+                    <span className={`text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                       {theme === "dark"
                         ? language === "en"
                           ? "Dark"
@@ -201,7 +217,7 @@ const Navbar = () => {
                     </span>
                   </button>
 
-                  {/* Icons Section */}
+                  {/* Action Icons */}
                   <div className="flex items-center justify-center gap-6 pt-4">
                     <button className="text-gray-400 hover:text-hover transition-colors">
                       <i className="fa-solid fa-magnifying-glass text-xl"></i>
@@ -215,9 +231,8 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                {/* Bottom Decoration */}
                 <div className="mt-8 sm:mt-12 flex justify-center">
-                  <div className="w-16 sm:w-20 h-1 bg-linear-to-r from-transparent via-hover to-transparent rounded-full"></div>
+                  <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-transparent via-hover to-transparent rounded-full"></div>
                 </div>
               </div>
             </div>
