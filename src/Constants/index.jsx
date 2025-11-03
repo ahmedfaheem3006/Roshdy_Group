@@ -27,6 +27,23 @@ export const titles = {
   },
 };
 
+export const newsletterContent = {
+  en: {
+    title: "Subscribe Us Now",
+    description: "Get latest news, updates and deals directly mailed to your inbox.",
+    placeholder: "Your email address here",
+    buttonText: "Subscribe",
+    successMessage: "Thank you for subscribing!",
+  },
+  ar: {
+    title: "اشترك معنا الأن",
+    description: "احصل على آخر الأخبار والتحديثات والعروض مباشرة في بريدك الإلكتروني.",
+    placeholder: "أدخل بريدك الإلكتروني",
+    buttonText: "اشترك",
+    successMessage: "شكراً لاشتراكك!",
+  },
+};
+
 // 3️⃣ Features section content with icons as strings
 
 // title and description for each feature in both languages

@@ -1,28 +1,28 @@
 /* eslint-disable react-refresh/only-export-components */
 // src/contexts/LanguageContext.jsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { navLinksBase, titles,featuresContent } from "../Constants/index.jsx";
+import { navLinksBase, titles, featuresContent,newsletterContent } from "../Constants/index.jsx";
 
 const translations = {
   en: {
-    // 1️⃣ Navigation links
     navLinks: navLinksBase.map(({ key, path }) => ({ title: titles.en[key], path })),
-    // 2️⃣ Features section content
     features: featuresContent.en.map((feature) => ({
       title: feature.title,
       description: feature.description,
       icon: feature.icon,
     })),
+    // subscribe: subscribeContent.en,
+    newsletter: newsletterContent.en, // 👈 إضافة
   },
   ar: {
-    // 1️⃣ Navigation links
     navLinks: navLinksBase.map(({ key, path }) => ({ title: titles.ar[key], path })),
-    // 2️⃣ Features section content
     features: featuresContent.ar.map((feature) => ({
       title: feature.title,
       description: feature.description,
       icon: feature.icon,
     })),
+    // subscribe: subscribeContent.ar,
+    newsletter: newsletterContent.ar, // 👈 إضافة
   },
 };
 
