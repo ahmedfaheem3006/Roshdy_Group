@@ -10,7 +10,7 @@ import { useTheme } from "../Contexts/ThemeContext";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
-  const { language, toggleLanguage, t, Languages } = useLanguage();
+  const { language, toggleLanguage, t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => {
@@ -58,22 +58,26 @@ const Navbar = () => {
     >
       <nav className="flex justify-between items-center ">
         {theme === "light" ? (
-          <picture className="*:size-14">
-            <source srcSet={logo} type="image/webp" />
-            <img src={Logo} alt="Logo" />
-          </picture>
+          <Link to="/">
+            <picture className="*:size-14">
+              <source srcSet={logo} type="image/webp" />
+              <img src={Logo} alt="Logo" />
+            </picture>
+          </Link>
         ) : (
-          <picture className="*:size-14">
-            <source srcSet={logodark} type="image/webp" />
-            <img src={LogoDark} alt="Logo" />
-          </picture>
+          <Link to="/">
+            <picture className="*:size-14">
+              <source srcSet={logodark} type="image/webp" />
+              <img src={LogoDark} alt="Logo" />
+            </picture>
+          </Link>
         )}
 
         <ul className="items-center space-x-11 md:flex hidden">
           {t("navLinks").map((link) => (
             <li
               key={link.path}
-              className="font-lato font-medium text-[14px] leading-[148%] tracking-[10%] mx-4"
+              className={`font-medium text-[16px] leading-[148%] tracking-[10%] mx-4 ${language === "ar" ? "font-cairo" : "font-lato"}`}
             >
               <Link
                 to={link.path}
@@ -143,7 +147,7 @@ const Navbar = () => {
                           : "text-gray-300 hover:bg-white/5 hover:text-hover"
                       } transition-all cursor-pointer`}
                     >
-                      <span className="font-medium text-lg sm:text-xl font-lato">
+                      <span className={`font-medium text-lg sm:text-xl ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                         {link.title}
                       </span>
                     </Link>
@@ -162,11 +166,11 @@ const Navbar = () => {
                   >
                     <div className="flex items-center gap-4">
                       <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
-                      <span className="font-family-lato font-medium text-lg sm:text-xl font-lato">
+                      <span className={`font-medium text-lg sm:text-xl ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                         {language === "en" ? "Language" : "اللغة"}
                       </span>
                     </div>
-                    <span className="font-family-lato text-base sm:text-lg text-gray-400">
+                    <span className={`font-lato text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                       {language === "ar" ? "العربية" : "English"}
                     </span>
                   </button>
@@ -182,11 +186,11 @@ const Navbar = () => {
                       ) : (
                         <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
                       )}
-                      <span className="font-family-lato font-medium text-lg sm:text-xl font-lato">
+                      <span className=" font-medium text-lg sm:text-xl font-lato">
                         {language === "en" ? "Theme" : "المظهر"}
                       </span>
                     </div>
-                    <span className="font-family-lato text-base sm:text-lg text-gray-400">
+                    <span className={`font-lato text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
                       {theme === "dark"
                         ? language === "en"
                           ? "Dark"
