@@ -78,22 +78,28 @@ const Navbar = () => {
     >
       <nav className="flex justify-between items-center">
         {theme === "light" ? (
+
+          <Link to="/">
           <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
             <source srcSet={logo} type="image/webp" />
             <img src={Logo} alt="Logo" />
           </picture>
+          </Link>
         ) : (
+          <Link to="/">
           <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
             <source srcSet={logodark} type="image/webp" />
             <img src={LogoDark} alt="Logo" />
           </picture>
+          </Link>
+
         )}
 
         <ul className="items-center space-x-11 md:flex hidden">
           {t("navLinks").map((link) => (
             <li
               key={link.path}
-              className="font-lato font-medium text-[14px] leading-[148%] tracking-[10%] mx-4"
+              className={`font-medium text-[16px] leading-[148%] tracking-[10%] mx-4 ${language === "ar" ? "font-cairo" : "font-lato"}`}
             >
               <Link
                 to={link.path}
@@ -136,44 +142,90 @@ const Navbar = () => {
         </div>
 
         {isMenuOpen && (
-          <div
-            className="fixed inset-x-0 top-[72px] bottom-0 bg-[#1a1a1a] dark:bg-[#0a0a0a] z-50 md:hidden overflow-y-hidden overflow-x-hidden"
-            style={{
-              height: "calc(100vh - 72px)",
-              direction: language === "ar" ? "rtl" : "ltr",
-            }}
-          >
-            <div className="container mx-auto px-4 py-6 sm:py-8">
-              <nav className="space-y-2">
-                {t("navLinks").map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={closeMenu}
-                    className={`flex items-center gap-4 p-4 sm:p-5 rounded-2xl ${
-                      location.pathname === link.path
-                        ? "bg-hover/20 text-hover shadow-lg border border-hover/30"
-                        : "text-gray-300 hover:bg-white/5 hover:text-hover"
-                    } transition-all cursor-pointer`}
+
+          <>
+            {/* Backdrop */}
+            {/* <div
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden"
+              onClick={closeMenu}
+            /> */}
+
+            {/* Full Screen Menu */}
+            <div
+              className="fixed inset-x-0 top-[72px] bottom-0 bg-[#1a1a1a] dark:bg-[#0a0a0a] z-50 md:hidden overflow-y-hidden overflow-x-hidden"
+              style={{
+                height: "calc(100vh - 72px)",
+                direction: language === "ar" ? "rtl" : "ltr",
+              }}
+            >
+              <div className="container mx-auto px-4 py-6 sm:py-8">
+                {/* Navigation Links */}
+                <nav className="space-y-2">
+                  {t("navLinks").map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={closeMenu}
+                      className={`flex items-center gap-4 p-4 sm:p-5 rounded-2xl ${
+                        location.pathname === link.path
+                          ? "bg-hover/20 text-hover shadow-lg border border-hover/30"
+                          : "text-gray-300 hover:bg-white/5 hover:text-hover"
+                      } transition-all cursor-pointer`}
+                    >
+                      <span className={`font-medium text-lg sm:text-xl ${language === "ar" ? "font-cairo" : "font-lato"}`}>
+                        {link.title}
+                      </span>
+                    </Link>
+                  ))}
+                </nav>
+
+                {/* Divider */}
+                <div className="my-6 sm:my-8 h-px bg-white/10" />
+
+                {/* Bottom Actions */}
+                <div className="space-y-3 sm:space-y-4">
+                  {/* Language Toggle */}
+                  <button
+                    onClick={toggleLanguage}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
                   >
-                    <span className="font-medium text-lg sm:text-xl font-lato">
-                      {link.title}
+                    <div className="flex items-center gap-4">
+                      <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
+                      <span className={`font-medium text-lg sm:text-xl ${language === "ar" ? "font-cairo" : "font-lato"}`}>
+                        {language === "en" ? "Language" : "اللغة"}
+                      </span>
+                    </div>
+                    <span className={`font-lato text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
+                      {language === "ar" ? "العربية" : "English"}
                     </span>
                   </Link>
                 ))}
               </nav>
 
-              <div className="my-6 sm:my-8 h-px bg-white/10" />
+                  {/* Theme Toggle */}
+                  <button
+                    onClick={toggleTheme}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
+                  >
+                    <div className="flex items-center gap-4">
+                      {theme === "dark" ? (
+                        <Moon className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
+                      ) : (
+                        <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
+                      )}
+                      <span className=" font-medium text-lg sm:text-xl font-lato">
+                        {language === "en" ? "Theme" : "المظهر"}
+                      </span>
+                    </div>
+                    <span className={`font-lato text-base sm:text-lg text-gray-400 ${language === "ar" ? "font-cairo" : "font-lato"}`}>
+                      {theme === "dark"
+                        ? language === "en"
+                          ? "Dark"
+                          : "داكن"
+                        : language === "en"
+                        ? "Light"
+                        : "فاتح"}
 
-              <div className="space-y-3 sm:space-y-4">
-                <button
-                  onClick={toggleLanguage}
-                  className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
-                >
-                  <div className="flex items-center gap-4">
-                    <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-hover shrink-0" />
-                    <span className="font-medium text-lg sm:text-xl font-lato">
-                      {language === "en" ? "Language" : "اللغة"}
                     </span>
                   </div>
                   <span className="text-base sm:text-lg text-gray-400">
