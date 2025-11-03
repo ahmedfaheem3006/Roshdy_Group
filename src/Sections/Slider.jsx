@@ -5,6 +5,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Prev from "../assets/Icons/prev.svg";
 import Next from "../assets/Icons/next.svg";
+import Hero1 from "../assets/Images/Hero1.png";
+import Hero2 from "../assets/Images/Hero2.png";
 
 const Slider = () => {
   return (
@@ -39,9 +41,9 @@ const Slider = () => {
             </div>
             <div className="flex-1 flex justify-end">
               <img
-                src="/path-to-watch-image.png"
+                src={Hero1}
                 alt="Product"
-                className="max-h-[400px] object-contain"
+                className="object-contain"
               />
             </div>
           </div>
@@ -61,7 +63,7 @@ const Slider = () => {
             </div>
             <div className="flex-1 flex justify-end">
               <img
-                src="/path-to-product-2.png"
+                src={Hero2}
                 alt="Product"
                 className="max-h-[400px] object-contain"
               />
@@ -85,7 +87,7 @@ const Slider = () => {
               <img
                 src="/path-to-product-3.png"
                 alt="Product"
-                className="max-h-[400px] object-contain"
+                className="max-h-[600px] object-contain"
               />
             </div>
           </div>
@@ -95,20 +97,20 @@ const Slider = () => {
       {/* Custom Navigation Arrows */}
       {/* Custom Navigation Arrows */}
       <button className="swiper-button-prev-custom absolute left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-10 cursor-pointer group">
-  <img 
-    src={Prev} 
-    alt="Previous"
-    className="w-10 h-16 md:w-12 md:h-20 lg:w-14 lg:h-24 opacity-50 group-hover:opacity-100 transition-opacity object-contain" 
-  />
-</button>
+        <img
+          src={Prev}
+          alt="Previous"
+          className="w-10 h-16 md:w-12 md:h-20 lg:w-14 lg:h-24 opacity-50 group-hover:opacity-100 transition-opacity object-contain"
+        />
+      </button>
 
-<button className="swiper-button-next-custom absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-10 cursor-pointer group">
-  <img 
-    src={Next} 
-    alt="Next"
-    className="w-10 h-16 md:w-12 md:h-20 lg:w-14 lg:h-24 opacity-50 group-hover:opacity-100 transition-opacity object-contain"
-  />
-</button>
+      <button className="swiper-button-next-custom absolute right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-10 cursor-pointer group">
+        <img
+          src={Next}
+          alt="Next"
+          className="w-10 h-16 md:w-12 md:h-20 lg:w-14 lg:h-24 opacity-50 group-hover:opacity-100 transition-opacity object-contain"
+        />
+      </button>
     </section>
   );
 };

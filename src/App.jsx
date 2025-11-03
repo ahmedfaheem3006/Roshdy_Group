@@ -1,6 +1,7 @@
 import Navbar from "./Components/Navbar"
 import Features from "./Sections/Features"
 import Slider from "./Sections/Slider"
+import Newsletter from "./Sections/Subscribe"
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Navbar />
       <Slider />
       <Features />
+      <Newsletter />
      </main> 
     </>
   )
