@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+
+@variant dark (.dark &);
+
+@theme{
+  --color-nav-bg: white;
+  --color-nav-bg-dark: #272727;
+  --color-text: #272727;
+  --color-text-dark: white;
+  --color-hover: #72AEC8;
+  --color-paragraph: #3A3A3A;
+  --color-paragraph-dark: white;
+  --color-section-bg: #EDF1F3;
+  --color-section-bg-dark: #1E1E1E;
+
+  --font-family-lato: 'Plus Jakarta Sans', sans-serif;
+  --font-family-jost: 'Plus Jakarta Sans', sans-serif;
+  --font-family-cairo: 'Cairo', sans-serif;
+}
+
+.font-lato {
+  font-family: var(--font-family-lato);
+}
+
+.font-jost {
+  font-family: var(--font-family-jost);
+}
+.font-cairo {
+  font-family: var(--font-family-cairo);
+}
+
+.padding-navbar {
+  @apply px-[5%] sm:px-[8%] md:px-[10%] lg:px-[10%] xl:px-[16%]
+}
+
+.padding-section{
+  @apply px-[9%] sm:px-[8%] md:px-[10%] lg:px-[10%] xl:px-[16%]
+}
+
+
+
+
+
+/* Hide default Swiper navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 3s ease-in-out infinite 1.5s;
+}
