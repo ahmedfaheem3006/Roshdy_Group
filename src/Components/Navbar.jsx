@@ -1,7 +1,7 @@
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Images/logo.jpeg";
-import logo from "../assets/Images/logo.webp";
+// import logo from "../assets/Images/logo.webp";
 import LogoDark from "../assets/Images/logo_dark.jpg";
 import logodark from "../assets/Images/logo_dark.webp";
 import { Moon, Sun, Menu, X, Globe } from "lucide-react";
@@ -69,7 +69,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`padding-navbar py-2 dark:bg-black bg-nav-bg fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`px-10 py-4 dark:bg-black bg-nav-bg fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? "shadow-lg backdrop-blur-md bg-nav-bg/95 dark:bg-black/95" 
           : ""
@@ -79,10 +79,11 @@ const Navbar = () => {
       <nav className="flex justify-between items-center">
         {theme === "light" ? (
           <Link to="/">
-            <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
+            {/* <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
               <source srcSet={logo} type="image/webp" />
               <img src={Logo} alt="Logo" />
-            </picture>
+            </picture> */}
+            <h1 className="font-semibold text-4xl ">RG</h1>
           </Link>
         ) : (
           <Link to="/">
@@ -103,8 +104,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`${
                   location.pathname === link.path
-                    ? "text-hover"
-                    : "text-text dark:text-text-dark hover:text-hover"
+                    ? "bg-black text-white rounded-full px-6 py-2"
+                    : "text-text dark:text-text-dark hover:bg-black hover:text-white rounded-full px-6 py-2"
                 }`}
               >
                 {link.title}
@@ -117,6 +118,7 @@ const Navbar = () => {
           <i className="fa-solid fa-magnifying-glass"></i>
           <i className="fa-solid fa-user"></i>
           <i className="fa-solid fa-cart-shopping"></i>
+          {/* 
           {theme === "light" ? (
             <Moon onClick={toggleTheme} className="w-5 h-5" />
           ) : (
@@ -127,6 +129,7 @@ const Navbar = () => {
           ) : (
             <span onClick={toggleLanguage}>EN</span>
           )}
+          */}
         </div>
 
         <div className="lg:hidden flex row-re items-center space-x-4">
@@ -175,7 +178,7 @@ const Navbar = () => {
 
                 {/* Bottom Actions */}
                 <div className="space-y-3 sm:space-y-4">
-                  {/* Language Toggle */}
+                  {/* Language Toggle
                   <button
                     onClick={toggleLanguage}
                     className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
@@ -191,7 +194,7 @@ const Navbar = () => {
                     </span>
                   </button>
 
-                  {/* Theme Toggle */}
+                  {/* Theme Toggle 
                   <button
                     onClick={toggleTheme}
                     className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
@@ -215,7 +218,8 @@ const Navbar = () => {
                         ? "Light"
                         : "فاتح"}
                     </span>
-                  </button>
+                  </button> 
+                  */}
 
                   {/* Action Icons */}
                   <div className="flex items-center justify-center gap-6 pt-4">
@@ -232,7 +236,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="mt-8 sm:mt-12 flex justify-center">
-                  <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-transparent via-hover to-transparent rounded-full"></div>
+                  <div className="w-16 sm:w-20 h-1 bg-linear-to-r from-transparent via-hover to-transparent rounded-full"></div>
                 </div>
               </div>
             </div>

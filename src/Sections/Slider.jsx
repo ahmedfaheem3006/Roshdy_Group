@@ -10,12 +10,12 @@ import { useLanguage } from "../Contexts/LanguageContext";
 import { Link } from "react-router";
 
 const Slider = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const currentSlides = slides[language];
 
   return (
-    <section className="relative w-full bg-[#edf1f3dd] h-auto md:h-[500px] lg:h-[612px] py-8 md:py-0">
+    <section className="relative w-[80%] mx-auto mt-24 bg-[linear-gradient(45deg,#f4f4f4,#d2d2d4)] rounded-xl h-[900px] md:h-[500px] lg:h-[800px] py-8 md:py-0">
       <Swiper
         modules={[Navigation, Autoplay]}
         spaceBetween={0}
@@ -34,14 +34,17 @@ const Slider = () => {
         dir={language === "ar" ? "rtl" : "ltr"}
         key={language}
       >
-        {currentSlides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div
+        {currentSlides.map((index) => (
+          <SwiperSlide key={index} className="relative">
+            <h1 className="absolute top-[10%] mx-auto text-center font-bold text-5xl md:text-7xl left-0 right-0  md:max-w-[85%]">
+              Turn Your Smartphone into a Home Command Center
+            </h1>
+            {/* <div
               className={`flex ${
                 language === "ar"
                   ? "flex-col-reverse md:flex-row"
                   : "flex-col-reverse md:flex-row"
-              } items-center justify-between h-full padding-section gap-6 md:gap-0 py-8 md:py-0`}
+              } items-center justify-between h-full padding-section gap-6 md:gap-0 py-8 md:py-0 mt-14`}
             >
               <div
                 className={`flex-1 space-y-4 md:space-y-12 ${
@@ -86,13 +89,54 @@ const Slider = () => {
                   className="h-56 sm:h-72 md:h-96 lg:max-h-[480px] object-contain"
                 />
               </div>
+            </div> */}
+            <div className="absolute bottom-[20%] md:bottom-[30%] left-[4%] max-w-[350px]">
+              <h3 className="font-bold absolute max-md:top-[30%]">
+                ( 2035 ) SMART HOME FOR SMART LIVING
+              </h3>
+              <h5 className="max-w-[300px] md:max-w-[350px] mt-30">
+                Seamlessly connect and control every device with Orris — your
+                all-in-one smart home solution powered by smartphone
+                integration.
+              </h5>
+              <button className="absolute max-md:bottom-[-60%] bottom-[-70%]">
+                <div className="flex items-center gap-6 bg-black text-white px-3 py-2 rounded-full ">
+                  <p className="uppercase ml-2">Get Started</p>
+                  <div className="text-white bg-blue-600 rounded-full p-2">
+                    {/* icon  insert here an arrow that is 45 deg that aim at the top right corner*/}
+                    <i
+                      className="fa-solid fa-arrow-up fa-rotate-by font-extralight text-lg"
+                      style={{ "--fa-rotate-angle": "45deg" }}
+                    ></i>
+                  </div>
+                </div>
+              </button>
             </div>
+            <div className="absolute md:left-0 md:right-0 sm:right-4 right-5 bottom-[10%] md:bottom-[15%]">
+              <img
+                src={index.image}
+                alt="Product"
+                className="mx-auto h-56 sm:h-72 md:h-96 lg:max-h-[480px] object-contain"
+              />
+            </div>
+            <ul className="max-md:hidden absolute  bottom-[15%]  right-[4%] w-full max-w-[350px]">
+              {t("sliderUlContent").map((slide, idx) => (
+                <div key={idx}>
+                  <li className="flex items-center justify-between mb-6">
+                    <span className="text-lg font-medium ">{slide.title}</span>
+                    {/* icon */}
+                    {slide.icon}
+                  </li>
+                  <hr className="my-2 text-gray-500 opacity-25" />
+                </div>
+              ))}
+            </ul>
           </SwiperSlide>
         ))}
       </Swiper>
 
       {/* Custom Navigation Arrows - Hidden on mobile */}
-      <button
+      {/* <button
         className={`swiper-button-prev-custom hidden md:block absolute ${
           language === "ar"
             ? "right-4 md:right-8 lg:right-12"
@@ -122,7 +166,7 @@ const Slider = () => {
             language === "ar" ? "rotate-180" : ""
           }`}
         />
-      </button>
+      </button> */}
     </section>
   );
 };

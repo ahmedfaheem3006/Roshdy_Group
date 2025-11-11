@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @import "tailwindcss";
 
 @variant dark (.dark &);
@@ -16,8 +19,8 @@
   --color-section-bg: #EDF1F3;
   --color-section-bg-dark: #1E1E1E;
 
-  --font-family-lato: 'Lato', sans-serif;
-  --font-family-jost: 'Jost', sans-serif;
+  --font-family-lato: 'Plus Jakarta Sans', sans-serif;
+  --font-family-jost: 'Plus Jakarta Sans', sans-serif;
   --font-family-cairo: 'Cairo', sans-serif;
 }
 

@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 // src/contexts/LanguageContext.jsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { navLinksBase, titles, featuresContent,newsletterContent } from "../Constants/index.jsx";
+import { navLinksBase, titles, featuresContent,newsletterContent, sliderUlContent } from "../Constants/index.jsx";
 
 const translations = {
   en: {
@@ -13,6 +13,10 @@ const translations = {
     })),
     // subscribe: subscribeContent.en,
     newsletter: newsletterContent.en, // 👈 إضافة
+    sliderUlContent: sliderUlContent.en.map((slide) => ({
+      title: slide.title,
+      icon: slide.icon,
+    })),
   },
   ar: {
     navLinks: navLinksBase.map(({ key, path }) => ({ title: titles.ar[key], path })),
@@ -23,6 +27,10 @@ const translations = {
     })),
     // subscribe: subscribeContent.ar,
     newsletter: newsletterContent.ar, // 👈 إضافة
+    sliderUlContent: sliderUlContent.ar.map((slide) => ({
+      title: slide.title,
+      icon: slide.icon,
+    })),
   },
 };
 
