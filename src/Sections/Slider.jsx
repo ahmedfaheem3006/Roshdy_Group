@@ -167,6 +167,7 @@ const Slider = () => {
           }`}
         />
       </button> */}
+      {/*  */}
     </section>
   );
 };
