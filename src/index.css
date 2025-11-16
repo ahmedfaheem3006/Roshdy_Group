@@ -91,3 +91,51 @@
 .animate-float-delayed {
   animation: float-delayed 3s ease-in-out infinite 1.5s;
 }
+
+
+/* أنيميشن دخول السلايد */
+@keyframes slideEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* أنيميشن خروج السلايد */
+@keyframes slideExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+}
+
+/* تطبيق الأنيميشن على السلايدر */
+.swiper-slide-active img {
+  animation: slideEnter 1s ease-out;
+}
+
+.swiper-slide-prev img {
+  animation: slideExit 1s ease-out;
+}
+
+/* أنيميشن Pulse للصور */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
