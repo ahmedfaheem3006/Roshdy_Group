@@ -148,15 +148,54 @@ export const slides = {
 
 export const sliderUlContent = {
   en: [
-    { title: "Security and Surveillance", icon: <i className="fa-solid fa-shield-halved"></i> },
-    { title: "Climate and Air Control", icon: <i className="fa-solid fa-wind"></i> },
-    { title: "Lighting and Ambiance", icon: <i className="fa-solid fa-lightbulb"></i> },
-    { title: "Entertainment & Media", icon: <i className="fa-solid fa-tv"></i> },
+    {
+      title: "Security and Surveillance",
+      icon: <i className="fa-solid fa-shield-halved"></i>,
+    },
+    {
+      title: "Climate and Air Control",
+      icon: <i className="fa-solid fa-wind"></i>,
+    },
+    {
+      title: "Lighting and Ambiance",
+      icon: <i className="fa-solid fa-lightbulb"></i>,
+    },
+    {
+      title: "Entertainment & Media",
+      icon: <i className="fa-solid fa-tv"></i>,
+    },
   ],
   ar: [
-    { title: "الأمن والمراقبة", icon: <i className="fa-solid fa-shield-halved"></i> },
-    { title: "التحكم في المناخ والهواء", icon: <i className="fa-solid fa-wind"></i> },
-    { title: "الإضاءة والأجواء", icon: <i className="fa-solid fa-lightbulb"></i> },
+    {
+      title: "الأمن والمراقبة",
+      icon: <i className="fa-solid fa-shield-halved"></i>,
+    },
+    {
+      title: "التحكم في المناخ والهواء",
+      icon: <i className="fa-solid fa-wind"></i>,
+    },
+    {
+      title: "الإضاءة والأجواء",
+      icon: <i className="fa-solid fa-lightbulb"></i>,
+    },
     { title: "الترفيه والإعلام", icon: <i className="fa-solid fa-tv"></i> },
   ],
+};
+
+// 4️⃣ Slider section content
+export const sliderContent = {
+  en: {
+    mainHeading: "Turn Your Smartphone into a Home Command Center",
+    smartTag: "( 2035 ) SMART HOME FOR SMART LIVING",
+    description:
+      "Seamlessly connect, automate, and control every smart device in your home—directly from your phone.",
+    buttonText: "Get Started",
+  },
+  ar: {
+    mainHeading: "حوّل هاتفك الذكي إلى مركز أوامر للمنزل",
+    smartTag: "( 2035 ) بيت ذكي لحياة ذكية",
+    description:
+      "تحكّم في كل أجهزة منزلك الذكية بسهولة من هاتفك، واستمتع بتجربة منزل موحّد وذكي بالكامل.",
+    buttonText: "ابدأ الآن",
+  },
 };

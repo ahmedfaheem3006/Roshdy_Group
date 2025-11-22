@@ -34,10 +34,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on window resize
+  // Close menu on window resize - تم تغيير 768 إلى 1050
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1050) {
         setIsMenuOpen(false);
       }
     };
@@ -70,8 +70,8 @@ const Navbar = () => {
   return (
     <header
       className={`px-10 py-4 dark:bg-black bg-nav-bg fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "shadow-lg backdrop-blur-md bg-nav-bg/95 dark:bg-black/95" 
+        isScrolled
+          ? "shadow-lg backdrop-blur-md bg-nav-bg/95 dark:bg-black/95"
           : ""
       }`}
       style={{ direction: "ltr" }}
@@ -79,22 +79,16 @@ const Navbar = () => {
       <nav className="flex justify-between items-center">
         {theme === "light" ? (
           <Link to="/">
-            {/* <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
-              <source srcSet={logo} type="image/webp" />
-              <img src={Logo} alt="Logo" />
-            </picture> */}
             <h1 className="font-semibold text-4xl ">RG</h1>
           </Link>
         ) : (
-          <Link to="/">
-            <picture className={`transition-all duration-300 ${isScrolled ? "*:size-12" : "*:size-14"}`}>
-              <source srcSet={logodark} type="image/webp" />
-              <img src={LogoDark} alt="Logo" />
-            </picture>
+         <Link to="/">
+            <h1 className="font-semibold text-4xl text-white ">RG</h1>
           </Link>
         )}
 
-        <ul className="items-center space-x-11 md:flex hidden">
+        {/* تم تغيير md:flex إلى min-[1050px]:flex */}
+        <ul className="items-center space-x-11 min-[1050px]:flex hidden">
           {t("navLinks").map((link) => (
             <li
               key={link.path}
@@ -104,8 +98,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`${
                   location.pathname === link.path
-                    ? "bg-black text-white rounded-full px-6 py-2"
-                    : "text-text dark:text-text-dark hover:bg-black hover:text-white rounded-full px-6 py-2"
+                    ? "bg-black dark:bg-white text-white dark:text-black rounded-full px-6 py-2"
+                    : "text-text dark:text-text-dark hover:bg-black hover:dark:bg-white hover:text-white hover:dark:text-black rounded-full px-6 py-2"
                 }`}
               >
                 {link.title}
@@ -114,11 +108,12 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center space-x-6 *:text-text dark:*:text-text-dark *:hover:text-hover *:cursor-pointer">
+        {/* تم تغيير md:flex إلى min-[1050px]:flex */}
+        <div className="hidden min-[1050px]:flex items-center space-x-6 *:text-text dark:*:text-text-dark *:hover:text-hover *:cursor-pointer">
           <i className="fa-solid fa-magnifying-glass"></i>
           <i className="fa-solid fa-user"></i>
           <i className="fa-solid fa-cart-shopping"></i>
-          {/* 
+
           {theme === "light" ? (
             <Moon onClick={toggleTheme} className="w-5 h-5" />
           ) : (
@@ -129,10 +124,11 @@ const Navbar = () => {
           ) : (
             <span onClick={toggleLanguage}>EN</span>
           )}
-          */}
+
         </div>
 
-        <div className="lg:hidden flex row-re items-center space-x-4">
+        {/* تم تغيير lg:hidden إلى max-[1049px]:flex */}
+        <div className="max-[1049px]:flex hidden row-re items-center space-x-4">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? (
               <X className="w-6 h-6 text-text dark:text-text-dark hover:text-red-600 mr-5" />
@@ -144,9 +140,9 @@ const Navbar = () => {
 
         {isMenuOpen && (
           <>
-            {/* Full Screen Menu */}
+            {/* Full Screen Menu - تم تغيير md:hidden إلى min-[1050px]:hidden */}
             <div
-              className="fixed inset-x-0 top-[72px] bottom-0 bg-[#1a1a1a] dark:bg-[#0a0a0a] z-50 md:hidden overflow-y-hidden overflow-x-hidden"
+              className="fixed inset-x-0 top-[72px] bottom-0 bg-[#1a1a1a] dark:bg-[#0a0a0a] z-50 min-[1050px]:hidden overflow-y-hidden overflow-x-hidden"
               style={{
                 height: "calc(100vh - 72px)",
                 direction: language === "ar" ? "rtl" : "ltr",
@@ -178,7 +174,7 @@ const Navbar = () => {
 
                 {/* Bottom Actions */}
                 <div className="space-y-3 sm:space-y-4">
-                  {/* Language Toggle
+                  {/* Language Toggle */}
                   <button
                     onClick={toggleLanguage}
                     className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
@@ -193,8 +189,6 @@ const Navbar = () => {
                       {language === "ar" ? "العربية" : "English"}
                     </span>
                   </button>
-
-                  {/* Theme Toggle 
                   <button
                     onClick={toggleTheme}
                     className="w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white transition-all"
@@ -218,8 +212,8 @@ const Navbar = () => {
                         ? "Light"
                         : "فاتح"}
                     </span>
-                  </button> 
-                  */}
+                  </button>
+
 
                   {/* Action Icons */}
                   <div className="flex items-center justify-center gap-6 pt-4">

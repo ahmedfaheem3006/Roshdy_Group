@@ -8,7 +8,7 @@ const App = () => {
     <>
       <Navbar />
       <Slider />
-      <Features />
+      {/* <Features /> */}
       <Newsletter />
     </>
   )
