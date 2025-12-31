@@ -18,11 +18,9 @@ const Slider = () => {
     <section className="relative w-[95%] mx-auto mt-18 bg-[linear-gradient(45deg,#f4f4f4,#d2d2d4)] rounded-xl min-[1201px]:h-[630px] py-8 md:py-5 overflow-hidden font-jost">
       {/* التايتل الثابت */}
       <h1
-        className={`max-[1200px]:relative max-[1200px]:mb-8 absolute top-[7%] mx-auto text-center font-bold left-0 right-0 md:max-w-[85%] z-10 ${
-          language === "ar" ? "font-cairo" : "font-jost"
-        } ${
-          language === "ar" ? "text-6xl md:text-6xl" : "text-5xl md:text-7xl"
-        }`}
+        className={`max-[1200px]:relative max-[1200px]:mb-8 max-[1200px]:mt-8 absolute top-[7%] mx-auto text-center font-bold left-0 right-0 md:max-w-[85%] z-10 ${language === "ar" ? "font-cairo leading-relaxed" : "font-jost"
+          } ${language === "ar" ? "text-4xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl" : "text-4xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+          }`}
       >
         {sliderTexts.mainHeading}
       </h1>
@@ -73,9 +71,8 @@ const Slider = () => {
             <div key={idx} className="animate-float-delayed">
               <li className="flex items-center justify-between mb-6">
                 <span
-                  className={`text-lg font-medium ${
-                    language === "ar" ? "font-cairo" : "font-lato"
-                  } text-text dark:text-black`}
+                  className={`text-lg font-medium ${language === "ar" ? "font-cairo" : "font-lato"
+                    } text-text dark:text-black`}
                 >
                   {slide.title}
                 </span>
@@ -90,33 +87,30 @@ const Slider = () => {
       {/* الوصف والزر */}
       <div className="max-[1200px]:relative max-[1200px]:mx-auto max-[1200px]:left-[0%] max-[1200px]:text-center absolute bottom-[15%] md:bottom-[25%] left-[4%] max-w-[350px] z-10">
         <h3
-          className={`max-[1200px]:relative max-[1200px]:mb-4 font-bold absolute max-md:top-[30%] ${
-            language === "ar"
-              ? "font-cairo text-lg px-4 py-3"
-              : "font-family-lato text-sm px-3 py-2"
-          } bg-black text-white rounded-full  animate-bounce-slow max-[1200px]:inline-block`}
+          className={`max-[1200px]:relative max-[1200px]:mb-4 font-bold absolute max-md:top-[30%] ${language === "ar"
+            ? "font-cairo text-lg px-4 py-3"
+            : "font-family-lato text-sm px-3 py-2"
+            } bg-black text-white rounded-full animate-bounce-slow max-[1200px]:inline-block`}
         >
           {sliderTexts.smartTag}
         </h3>
         <h5
-          className={`max-w-[300px] md:max-w-[350px] max-[1200px]:mx-auto max-[1200px]:mt-0 mt-18 ${
-            language === "ar" ? "font-cairo text-[20px]!" : "font-lato"
-          } text-paragraph dark:text-black mb-6`}
+          className={`max-w-[300px] md:max-w-[350px] max-[1200px]:mx-auto max-[1200px]:mt-0 mt-18 ${language === "ar" ? "font-cairo text-[20px]!" : "font-lato"
+            } text-paragraph dark:text-black mb-6`}
         >
           {sliderTexts.description}
         </h5>
         <button className={`max-[1200px]:relative max-[1200px]:bottom-0 absolute max-md:bottom-[-60%] bottom-[-50%] animate-bounce-slow group cursor-pointer max-[1200px]:mt-6 hover:scale-105 transition-transform duration-300`}>
-          <div className="flex items-center gap-6 bg-black text-white px-3 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 ">
+          <div className="flex items-center gap-6 bg-black text-white px-3 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300">
             <p
-              className={`uppercase  ${
-                language === "ar"
-                  ? "font-cairo mr-2 text-xl!"
-                  : "font-jost ml-2"
-              }`}
+              className={`uppercase  ${language === "ar"
+                ? "font-cairo mr-2 text-xl!"
+                : "font-jost ml-2"
+                }`}
             >
               {sliderTexts.buttonText}
             </p>
-            <div className="text-white bg-blue-600 group-hover:bg-white group-hover:text-blue-600 rounded-full p-2 transition-transform duration-500 group-hover:rotate-360">
+            <div className="text-white bg-blue-600 group-hover:bg-white group-hover:text-blue-600 rounded-full px-3 py-2 transition-transform duration-500 group-hover:rotate-360">
               <i
                 className="fa-solid fa-arrow-up fa-rotate-by font-extralight text-lg"
                 style={{ "--fa-rotate-angle": "45deg" }}

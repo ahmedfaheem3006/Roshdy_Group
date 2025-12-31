@@ -43,6 +43,15 @@
   @apply px-[9%] sm:px-[8%] md:px-[10%] lg:px-[10%] xl:px-[16%]
 }
 
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
 
 
 

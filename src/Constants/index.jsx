@@ -16,14 +16,14 @@ export const navLinksBase = [
 export const titles = {
   en: {
     home: "Home",
-    about: "About",
+    about: "About Us",
     products: "Products",
     blogs: "Blogs",
-    contact: "Contact",
+    contact: "Contact Us",
   },
   ar: {
     home: "الرئيسية",
-    about: "حول",
+    about: "تفاصيل عنا",
     products: "المنتجات",
     blogs: "المدونات",
     contact: "اتصل بنا",
@@ -49,52 +49,60 @@ export const newsletterContent = {
   },
 };
 
-// 3️⃣ Features section content with icons as strings
-
-// title and description for each feature in both languages
+// 3️⃣ Features section content with icons
 export const featuresContent = {
   en: [
     {
-      title: "Free delivery",
-      description: "Get your orders delivered for free.",
-      icon: "cart.svg",
+      title: "10AM TO 6PM SUPPORT",
+      description: "01050627310",
+      iconName: "headset",
     },
     {
-      title: "Quality guarantee",
-      description: "We guarantee the quality of our products.",
-      icon: "quality.svg",
+      title: "ACCEPT PAYMENT",
+      description: "Cash, Instapay",
+      iconName: "credit-card",
     },
     {
-      title: "Daily offers",
-      description: "Get the best deals every day.",
-      icon: "offer.svg",
+      title: "SECURED PAYMENT",
+      description: "100% secured",
+      iconName: "shield",
     },
     {
-      title: "100% secure payment",
-      description: "Your payment information is always safe with us.",
-      icon: "security.svg",
+      title: "7 YEARS GUARANTEE",
+      description: "14 DAYS RETURN",
+      iconName: "medal",
+    },
+    {
+      title: "FAST SHIPPING",
+      description: "All Over Egypt",
+      iconName: "truck",
     },
   ],
   ar: [
     {
-      title: "توصيل مجاني",
-      description: "احصل على طلباتك مع توصيل مجاني.",
-      icon: "cart.svg",
+      title: "دعم من 10ص الى 6م",
+      description: "01050627310",
+      iconName: "headset",
     },
     {
-      title: "ضمان الجودة",
-      description: "نحن نضمن جودة منتجاتنا.",
-      icon: "quality.svg",
+      title: "طرق الدفع",
+      description: "كاش، انستاباي",
+      iconName: "credit-card",
     },
     {
-      title: "عروض يومية",
-      description: "احصل على أفضل العروض كل يوم.",
-      icon: "offer.svg",
+      title: "دفع آمن",
+      description: "مؤمن 100%",
+      iconName: "shield",
     },
     {
-      title: "دفع آمن 100%",
-      description: "معلومات الدفع الخاصة بك آمنة دائمًا معنا.",
-      icon: "security.svg",
+      title: "ضمان 7 سنوات",
+      description: "استرجاع خلال 14 يوم",
+      iconName: "medal",
+    },
+    {
+      title: "شحن سريع",
+      description: "لجميع أنحاء مصر",
+      iconName: "truck",
     },
   ],
 };
@@ -186,14 +194,14 @@ export const sliderUlContent = {
 export const sliderContent = {
   en: {
     mainHeading: "Turn Your Smartphone into a Home Command Center",
-    smartTag: "( 2035 ) SMART HOME FOR SMART LIVING",
+    smartTag: "( 2026 ) SMART HOME FOR SMART LIVING",
     description:
       "Seamlessly connect, automate, and control every smart device in your home—directly from your phone.",
     buttonText: "Get Started",
   },
   ar: {
     mainHeading: "حوّل هاتفك الذكي إلى مركز أوامر للمنزل",
-    smartTag: "( 2035 ) بيت ذكي لحياة ذكية",
+    smartTag: "( 2026 ) بيت ذكي لحياة ذكية",
     description:
       "تحكّم في كل أجهزة منزلك الذكية بسهولة من هاتفك، واستمتع بتجربة منزل موحّد وذكي بالكامل.",
     buttonText: "ابدأ الآن",
