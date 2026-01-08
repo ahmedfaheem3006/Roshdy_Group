@@ -207,3 +207,79 @@ export const sliderContent = {
     buttonText: "ابدأ الآن",
   },
 };
+
+// 5️⃣ Footer Section Content
+export const footerContent = {
+  en: {
+    about: {
+      title: "RG SMART HOME",
+      description: "Professional services with excellence and innovation across multiple industries.",
+    },
+    quickLinks: {
+      title: "QUICK LINKS",
+      links: [
+        { label: "HOME", path: "/" },
+        { label: "ABOUT", path: "/about" },
+        { label: "SHOP", path: "/products" },
+        { label: "BLOGS", path: "/blog" },
+        { label: "CONTACT", path: "/contact" },
+      ]
+    },
+    helpInfo: {
+      title: "HELP & INFO",
+      links: [
+        { label: "TRACK YOUR ORDER", path: "/" }, // Placeholder paths
+        { label: "RETURNS POLICIES", path: "/" },
+        { label: "SHIPPING + DELIVERY", path: "/" },
+        { label: "CONTACT US", path: "/contact" },
+        { label: "FAQS", path: "/" },
+      ]
+    },
+    contact: {
+      title: "CONTACT US",
+      queryText: "Do you have any queries or suggestions?",
+      email: "RG.ROSHDYGROUP@GMAIL.COM",
+      supportText: "If you need support? Just give us a call.",
+      phone: "01200777756",
+    },
+    copyright: "Copyright 2026 RG Smart Home. All rights reserved.",
+    shipWith: "We ship with:",
+    paymentOptions: "Payment options:",
+  },
+  ar: {
+    about: {
+      title: "RG SMART HOME",
+      description: "خدمات احترافية بتميز وابتكار عبر العديد من الصناعات.",
+    },
+    quickLinks: {
+      title: "روابط سريعة",
+      links: [
+        { label: "الرئيسية", path: "/" },
+        { label: "من نحن", path: "/about" },
+        { label: "المتجر", path: "/products" },
+        { label: "المدونات", path: "/blog" },
+        { label: "تواصل معنا", path: "/contact" },
+      ]
+    },
+    helpInfo: {
+      title: "المساعدة والمعلومات",
+      links: [
+        { label: "تتبع طلبك", path: "/" },
+        { label: "سياسات الاسترجاع", path: "/" },
+        { label: "الشحن والتوصيل", path: "/" },
+        { label: "اتصل بنا", path: "/contact" },
+        { label: "الأسئلة الشائعة", path: "/" },
+      ]
+    },
+    contact: {
+      title: "اتصل بنا",
+      queryText: "هل لديك أي استفسارات أو مقترحات؟",
+      email: "RG.ROSHDYGROUP@GMAIL.COM",
+      supportText: "هل تحتاج إلى دعم؟ فقط اتصل بنا.",
+      phone: "01200777756",
+    },
+    copyright: "حقوق النشر 2026 RG Smart Home. جميع الحقوق محفوظة.",
+    shipWith: "نحن نشحن مع:",
+    paymentOptions: "خيارات الدفع:",
+  },
+};
